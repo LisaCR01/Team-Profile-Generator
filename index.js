@@ -1,23 +1,11 @@
 const  fstat  = require('fs');
 const inquirer = require('inquirer');
+const Employee = require ('./lib/Employee');
+const Manager = require ('./lib/Manager');
+const Intern = require ('./lib/Intern');
+const Engineer = require ('./lib/Engineer');
 const generateMarkdown = require('./src/generateMarkdown');
-
-// Packages needed for this application
-require('inquirer')
-require('fs')
-require('./src/generateMarkdown')
-// class Employee {
-//     constructor(name,id,email) {
-//         this.name = name;
-//         this.id = id;
-//         this.email = email;
-//     };
-//     getName()
-//     getId()
-//     getEmail()
-//     getRole()
-// }
-
+var team = [];
 
 
 const questionsManager = [
@@ -126,16 +114,22 @@ function writeToFile(fileName, data) {
     err ? console.error(err) :console.log ('readme written'))
 
 }
-var data="";
 function init() {
-    inquirer.prompt(questionsManager)
-    .then((data) =>
-    {
-     console.log(data);
-     writeToFile("output.HTML",JSON.stringify(data))
+        inquirer.prompt(questionsManager)
+        .then((data) =>
+      {team.push(data);
     }
-    );
-}
+        )
+     .then(()=>  inquirer.prompt(questionAddPeople) 
+     .then((WantedMember) =>
+     {if(WantedMember.Team_Building=="Intern"){console.log("Intern Added")};
+      if(WantedMember.Team_Building=="Engineer"){console.log("Engineer Added")}}
+     ))
+    }
+
+
+    //  console.log(data);
+    //  writeToFile("output.HTML",JSON.stringify(data))
 
 // Function call init to initialize app
 init();
