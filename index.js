@@ -7,7 +7,6 @@ const Engineer = require ('./lib/Engineer');
 const generateMarkdown = require('./src/generateMarkdown');
 var team = [];
 
-
 const questionsManager = [
     {
         type:'input',
@@ -81,7 +80,7 @@ const questionsIntern = [
 
 ]
 
-const questionsEmployee = [
+const questionsEngineer = [
     {
         type:'input',
         message:'What is your employee’s name?',
@@ -114,20 +113,28 @@ function writeToFile(fileName, data) {
     err ? console.error(err) :console.log ('readme written'))
 
 }
+
+var begin = "yes"
 function init() {
-        inquirer.prompt(questionsManager)
-        .then((data) =>
-      {team.push(data);
+    if (begin == "yes"){
+        inquirer.prompt(questionsManager)
+        .then((data) =>
+        {team.push(data);begin = "cont";return init ()})}
+
+    else {
+        console.log("Whose next");
+        inquirer.prompt(questionAddPeople)
+        .then((WantedMember) =>
+        {if(WantedMember.Team_Building=="Intern")
+        {inquirer.prompt(questionsIntern).then((internData)=>{team.push({"teamRole":"Intern", ...internData});return init ()})};
+         if(WantedMember.Team_Building=="Engineer")
+        {inquirer.prompt(questionsEngineer).then((engineerData)=>{team.push({"teamRole":"Engineer", ...engineerData});return init ()})};
+         if(WantedMember.Team_Building=="that`s everyone"){console.log (team)}
     }
-        )
-     .then(()=>  inquirer.prompt(questionAddPeople) 
-     .then((WantedMember) =>
-     {if(WantedMember.Team_Building=="Intern"){console.log("Intern Added")};
-      if(WantedMember.Team_Building=="Engineer"){console.log("Engineer Added")}}
-     ))
+     )
     }
 
-
+}
     //  console.log(data);
     //  writeToFile("output.HTML",JSON.stringify(data))
 
