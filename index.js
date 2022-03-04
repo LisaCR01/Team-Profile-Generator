@@ -83,34 +83,55 @@ const questionsIntern = [
 const questionsEngineer = [
     {
         type:'input',
-        message:'What is your employee’s name?',
-        name:'Employee_Name',
-        default:'Employee Name'
+        message:'What is your engineer’s name?',
+        name:'Engineer_Name',
+        default:'Engineer Name'
     },
     {
         type:'input',
-        message:'What is your employee’s employee ID?',
-        name:'Employee_ID',
-        default:'Employee Employee ID'
+        message:'What is your engineer’s employee ID?',
+        name:'Engineer_ID',
+        default:'Engineer ID'
     },
     {
         type:'input',
-        message:'What is your employee’s email address?',
-        name:'Employee_Email',
-        default:'Employee Email'
+        message:'What is your engineer’s email address?',
+        name:'Engineer_Email',
+        default:'Engineer Email'
     },
     {
         type:'input',
-        message:'What is your employee’s GitHub?',
-        name:'Intern_Github',
-        default:'Employee Github'
+        message:'What is your engineer’s GitHub?',
+        name:'Engineer_Github',
+        default:'Engineer Github'
     },
 ]
+
+function createEmployees(){
+    console.log("t1");
+    for (const teamEmployee of team){
+    {
+        if (teamEmployee.teamRole=="Manager")
+        {let managerTemporary = new Manager (teamEmployee.Manager_Name, teamEmployee.Manager_Email, teamEmployee.Manager_ID, teamEmployee.Manager_Office);
+        console.log(managerTemporary); writeToFile("try1.html",managerTemporary)}
+    }
+    {
+        if (teamEmployee.teamRole=="Intern")
+        {let internTemporary = new Intern (teamEmployee.Intern_Name, teamEmployee.Intern_Email, teamEmployee.Intern_ID, teamEmployee.Intern_School);
+        console.log(internTemporary); writeToFile("try1.html",internTemporary)}
+    }
+    {
+        if (teamEmployee.teamRole=="Engineer")
+        {let engineerTemporary = new Manager (teamEmployee.Engineer_Name, teamEmployee.Engineer_Email, teamEmployee.Engineer_ID, teamEmployee.Engineer_Github);
+        console.log(engineerTemporary); writeToFile("try1.html",engineerTemporary)}
+    }
+}
+}
 
 function writeToFile(fileName, data) {
     
     fstat.writeFile(fileName,generateMarkdown(data),(err)=>
-    err ? console.error(err) :console.log ('readme written'))
+    err ? console.error(err) :console.log ('HTML written'))
 
 }
 
@@ -129,7 +150,7 @@ function init() {
         {inquirer.prompt(questionsIntern).then((internData)=>{team.push({"teamRole":"Intern", ...internData});return init ()})};
          if(WantedMember.Team_Building=="Engineer")
         {inquirer.prompt(questionsEngineer).then((engineerData)=>{team.push({"teamRole":"Engineer", ...engineerData});return init ()})};
-         if(WantedMember.Team_Building=="that`s everyone"){console.log (team)}
+         if(WantedMember.Team_Building=="that`s everyone"){console.log("?a?");createEmployees()}
     }
      )
     }
