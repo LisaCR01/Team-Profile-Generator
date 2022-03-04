@@ -118,17 +118,17 @@ function createEmployees(){
     {
         if (teamEmployee.teamRole=="Manager")
         {let managerTemporary = new Manager (teamEmployee.Manager_Name, teamEmployee.Manager_ID, teamEmployee.Manager_Email,teamEmployee.Manager_Office);
-        console.log(managerTemporary); writeToFile("try1.html",managerTemporary);if(employeeIndex==len){endOfHTML("try1.html")}else{ employeeIndex++}}
+        console.log(managerTemporary); writeToFile("./dist/output-team.html",managerTemporary);if(employeeIndex==len){endOfHTML("./dist/output-team.html")}else{ employeeIndex++}}
     }
     {
         if (teamEmployee.teamRole=="Intern")
         {let internTemporary = new Intern (teamEmployee.Intern_Name,teamEmployee.Intern_ID, teamEmployee.Intern_Email, teamEmployee.Intern_School);
-        console.log(internTemporary); appendToFileIntern("try1.html",internTemporary);if(employeeIndex==len){endOfHTML("try1.html")}else{ employeeIndex++}}
+        console.log(internTemporary); appendToFileIntern("./dist/output-team.html",internTemporary);if(employeeIndex==len){endOfHTML("./dist/output-team.html")}else{ employeeIndex++}}
     }
     {
         if (teamEmployee.teamRole=="Engineer")
         {let engineerTemporary = new Engineer (teamEmployee.Engineer_Name, teamEmployee.Engineer_ID, teamEmployee.Engineer_Email, teamEmployee.Engineer_Github);
-        console.log(engineerTemporary); appendToFileEngineer("try1.html",engineerTemporary);if(employeeIndex==len){endOfHTML("try1.html")}else{ employeeIndex++}}
+        console.log(engineerTemporary); appendToFileEngineer("./dist/output-team.html",engineerTemporary);if(employeeIndex==len){endOfHTML("./dist/output-team.html")}else{ employeeIndex++}}
     }
 }
 
