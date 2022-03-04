@@ -11,7 +11,6 @@ In this project I created a Node.js command line application that takes in infor
 * Tailwind
 
 ## Criteria that I Met to Achieve this
-
 * After a user is prompted for information about their team members a nicely formatted team rosterHTML file is generated based on their input.
 * When the user clicks on an  email in the HTML then the member's email address will populate the TO field in their default email program.
 * When the user clicks on a github username in the HTML then they are taken to the relevant GitHub profile in a new tab.
@@ -25,7 +24,12 @@ In this project I created a Node.js command line application that takes in infor
 
 ### Walkthrough Video
 
-### Preview of Team Profile Generator
+### Team Profile Generator 
+#### I chose to display varying numbers of team members to show how the use of tailwind grids makes the layout neat.
+
+![Individual summary for the 6 members of a team.](Assets/Images/6-Cards.png?raw=true)
+![Individual summary for the 4 members of a team.](Assets/Images/4-Cards.png?raw=true)
+![Individual summary for the 3 members of a team.](Assets/Images/3-Cards.png?raw=true)
 
 ### Default Answer
 
