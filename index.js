@@ -1,14 +1,19 @@
+// Packages needed for this application.
 const  fstat  = require('fs');
 const inquirer = require('inquirer');
+// Classes created specifically for this project to create templates.
 const Employee = require ('./lib/Employee');
 const Manager = require ('./lib/Manager');
 const Intern = require ('./lib/Intern');
 const Engineer = require ('./lib/Engineer');
+// Javascript files needed for the computer to generate output-team.html.
 const mainCard = require('./src/main-card');
 const generateEngineerCard = require('./src/engineer-card')
 const generateInternCard = require('./src/intern-card') 
+// Array for the computer to put wanted team members in.
 var team = [];
 
+// Question bank needed for the manager of the team.
 const questionsManager = [
     {
         type:'input',
@@ -38,7 +43,7 @@ const questionsManager = [
 ]
 
 
-
+// Question tells the computer if any more team members are wanted to be added or the team is complete.
 const questionAddPeople = [
     {
         type:'list',
@@ -50,11 +55,7 @@ const questionAddPeople = [
 ]
 
 
-// create an if statement to ask how many if they say they want an intern 
-// need something that asks the amount of times given the information of the interns
-// create an if statement to ask how many if they say they want an employee
-// need something that asks the amount of times given the information of the interns
-
+// Question bank needed for any interns of the team.
 const questionsIntern = [
     {
         type:'input',
@@ -83,6 +84,7 @@ const questionsIntern = [
 
 ]
 
+// Question bank needed for any engineers of the team.
 const questionsEngineer = [
     {
         type:'input',
@@ -110,8 +112,11 @@ const questionsEngineer = [
     },
 ]
 
+// Computer needs this to know when it has finished processing the team.
 employeeIndex=0
 const len=team.length-1
+
+// createEmployees function takes the team member objects and creates the necessary Html components.
 function createEmployees(){
    
     for (const teamEmployee of team){
@@ -134,6 +139,8 @@ function createEmployees(){
 
 }
 
+// Computer uses writeToFile function to write the top of the HTML file which is consistent.
+// This includes the manager's card.
 function writeToFile(fileName, data) {
     
     fstat.writeFile(fileName,mainCard(data),(err)=>
@@ -141,6 +148,7 @@ function writeToFile(fileName, data) {
 
 }
 
+// Computer uses appendToFileEngineer function to add the engineer's card when necessary.
 function appendToFileEngineer(fileName, data) {
     
     fstat.appendFile(fileName,generateEngineerCard(data),(err)=>
@@ -148,6 +156,7 @@ function appendToFileEngineer(fileName, data) {
 
 }
 
+// Computer uses appendToFileIntern function to add the intern's card when necessary.
 function appendToFileIntern(fileName, data) {
     
     fstat.appendFile(fileName,generateInternCard(data),(err)=>
@@ -155,19 +164,24 @@ function appendToFileIntern(fileName, data) {
 
 }
 
+// Computer uses endOfHTML function to write the closing semantic tags necessary.
 function endOfHTML(fileName){
     fstat.appendFile(fileName,'</main> </body>',(err)=>
     err ? console.error(err) :console.log ('html complete'))
 }
 
+// begin is set to "yes" when the script is first run to create the manager.
 var begin = "yes"
+// function init makes the computer ask the questions of who is in the team.
 function init() {
     if (begin == "yes"){
         inquirer.prompt(questionsManager)
         .then((data) =>
+        // when begin = "cont" it makes the computer carry on to the else statement.
         {team.push({"teamRole":"Manager", ...data});begin = "cont";return init ()})}
 
     else {
+        // Computer runs through this loop until all the wanted members have been added.
         console.log("Whose next");
         inquirer.prompt(questionAddPeople)
         .then((WantedMember) =>
@@ -181,8 +195,6 @@ function init() {
     }
 
 }
-    //  console.log(data);
-    //  writeToFile("output.HTML",JSON.stringify(data))
 
 // Function call init to initialize app
 init();
