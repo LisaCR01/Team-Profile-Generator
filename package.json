@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest --verbose",
-    "test:watch":"jest --verbose --watchAll"
+    "test:watch": "jest --verbose --watchAll"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.1"
   }
 }
