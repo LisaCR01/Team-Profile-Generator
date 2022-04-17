@@ -38,5 +38,4 @@ The default answer is the writing in brackets after the command line question. I
 ### Github Repository
 [Github Repository](https://github.com/LisaCR01/Team-Profile-Generator.git)
 
-## Contact Information
 
