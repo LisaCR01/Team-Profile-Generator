@@ -40,3 +40,4 @@ The default answer is the writing in brackets after the command line question. I
 
 ## Contact Information
 [Email](mailto:lcrgunn@gmail.com)
+[Github](https://github.com/LisaCR01)
