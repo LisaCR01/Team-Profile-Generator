@@ -39,3 +39,4 @@ The default answer is the writing in brackets after the command line question. I
 [Github Repository](https://github.com/LisaCR01/Team-Profile-Generator.git)
 
 ## Contact Information
+[Email](mailto:lcrgunn@gmail.com)
