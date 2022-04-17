@@ -1,6 +1,13 @@
 # Team Profile Generator
 In this project I created a Node.js command line application that takes in information about employees on a software engineering team an generates an HTML webpage that displays summaries for each person. My motivation behind building this project was to explore the use of testing using jest package in my application, as testing is key to making code maintainable. Another new area I explored in this project is the use of classes in their usage as templates to create new objects in JavaScript. 
 
+## User Story
+```md
+AS A manager
+I WANT to generate a webpage that displays my team's basic info
+SO THAT I have quick access to their emails and GitHub profiles
+```
+
 ## Technologies Used
 * Jest package
 * Inquirer package
